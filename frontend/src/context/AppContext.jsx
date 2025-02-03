@@ -4,9 +4,9 @@ import { doctors } from './../assets/assets';
 export const AppContext = createContext();
 
 const AppContextProvider = (props)=>{
-    
+    const currancy = '$'
     const value = {
-        doctors
+        doctors, currancy
     }
     
     return(
