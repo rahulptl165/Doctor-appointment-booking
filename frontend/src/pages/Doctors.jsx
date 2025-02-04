@@ -37,7 +37,7 @@ const Doctors = () => {
           {
             filterDoc.map((item, index)=>(
           <div onClick={()=>navigate(`/appointment/${item._id}`)} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-x-[-10px] duration-300'>
-              <img className='bg-blue-50' src={item.image} alt=" " />
+              <img className='bg-blue-50 hover:bg-primary' src={item.image} alt=" " />
               <div className='p-4'>
                   <div className='flex items-center gap-2 text-center text-sm text-green-500'>
                      <p className='w-2 h-2 bg-green-500 rounded-full'></p> <p>Available</p>
