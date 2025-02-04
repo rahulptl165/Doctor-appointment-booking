@@ -21,7 +21,7 @@ const Login = () => {
         {
           state === 'Sign Up' && <div className='w-full'>
           <p className='text-gray-800 font-medium'>Full Name</p>
-          <input className='border border-gray-200 w-full py-1 rounded-md' onChange={(event)=>setName(event.target.value)}  type='text' required />
+          <input className='border border-gray-200 w-full py-1 rounded-md' onChange={(event)=>setName(event.target.value)} value={name} type='text' required />
         </div>
         }
         
@@ -29,12 +29,12 @@ const Login = () => {
         
         <div className='w-full'>
           <p className='text-gray-800 font-medium'>Email</p>
-          <input className='border border-gray-200 w-full py-1 rounded-md' onChange={(event)=>setEmail(event.target.value)}  type='email' required />
+          <input className='border border-gray-200 w-full py-1 rounded-md' onChange={(event)=>setEmail(event.target.value)} value={email} type='email' required />
         </div>
         
         <div className='w-full'>
           <p className='text-gray-800 font-medium'>Password</p>
-          <input className='border border-gray-200 w-full py-1 rounded-md' onChange={(event)=>setPassword(event.target.value)}  type='password' required />
+          <input className='border border-gray-200 w-full py-1 rounded-md' onChange={(event)=>setPassword(event.target.value)} value={password} type='password' required />
         </div>
         <button className='bg-primary text-white rounded-lg px-2 py-2 mb-2 hover:scale-105 transition-all duration-300'>{ state === 'Sign Up' ? 'Create Account' : 'Login'}</button>
         <p>{ state === 'Sign Up' ? 'Already have account?' : 'Do not have account'} <span onClick={()=>{ state === 'Sign Up' ? setState('Login') : setState('Sign Up')}} className='text-primary underline cursor-pointer'>{ state === 'Sign Up' ? 'Login hear' : 'Sing Up'}</span></p>
