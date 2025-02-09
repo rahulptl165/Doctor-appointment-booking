@@ -3,8 +3,6 @@ import { assets } from './../assets/assets';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 
-
-
 const Navbar = () => {
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false);
@@ -47,7 +45,20 @@ const Navbar = () => {
         </div>
         :<button onClick={()=>navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
       }
-        
+      <img onClick={()=>(setShowMenu(true))} className='md:hidden w-6' src={assets.menu_icon} alt='' />
+      {/* ------- mobile menu -------- */}
+      <div className={`${showMenu ? 'fixed w-full' : 'h-0 w-0'} md:hidden right-0 top-0 bottom-0 bg-white overflow-hidden transition-all`}>
+        <div className='flex mt-3 mx-1 items-center justify-between px-5 py-6'>
+          <img className='w-36 mb-2' src={assets.logo} alt='' />
+          <img onClick={()=>(setShowMenu(false))} className='w-7 mb-2' src={assets.cross_icon} alt='' />
+          </div>
+          <ul className='flex flex-col gap-1'>
+            <NavLink onClick={()=>{setShowMenu(false)}}  to='/'><p className='px-2 py-3 text-xl text-gray-800 border border-gray-200'>Home</p></NavLink>
+            <NavLink onClick={()=>{setShowMenu(false)}}  to='/doctors'><p className='px-2 py-3 text-xl text-gray-800 border border-gray-200'>All Doctors</p></NavLink>
+            <NavLink onClick={()=>{setShowMenu(false)}}  to='/about'><p className='px-2 py-3 text-xl text-gray-800 border border-gray-200'>About Us</p></NavLink>
+            <NavLink onClick={()=>{setShowMenu(false)}}  to='/contact'><p className='px-2 py-3 text-xl text-gray-800 border border-gray-200'>Contact Us</p></NavLink>
+          </ul>
+      </div>
       </div>
     </div>
   )

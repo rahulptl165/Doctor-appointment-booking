@@ -8,10 +8,10 @@ const About = () => {
         <p>ABOUT <span className='text-gray-900 font-medium'>US</span></p>
       </div>
       
-      <div className='flex gap-4 w-full mt-6'>
-        <img className='w-2/3 rounded-lg' src={assets.about_image} alt='' />
+      <div className='flex gap-4 flex-wrap sm:flex sm:flex-nowrap  w-full mt-6'>
+        <img className='sm:w-3/3 rounded-lg' src={assets.about_image} alt='' />
         
-        <div className='flex flex-col gap-3 border rounded-lg border-gray-500'>
+        <div className='flex flex-col flex-wrap gap-3 border rounded-lg border-gray-500'>
           <p className='p-3 text-gray-600 font-light'>Our doctor appointment booking system makes scheduling your healthcare visits quick and easy. With just a few clicks, you can find available doctors in your area, choose a suitable time, and secure your appointment. We offer a simple, user-friendly interface designed to streamline the booking process, saving you time and effort.</p>
           <p className='p-3 text-gray-600 font-light'>Our platform ensures a seamless experience by offering real-time availability, reminders, and appointment management features. Whether you need a routine check-up or a specialist consultation, our system helps you connect with trusted healthcare professionals conveniently and efficiently. Your health is our priority, and we're here to make the process as smooth as possible.</p>
           <b className='p-3 pb-0 text-gray-900 font-medium'>Our vision</b>
@@ -21,7 +21,7 @@ const About = () => {
       
       <p className='text-xl text-gray-600 font-semibold mt-8'>WHY <span className='text-gray-900'>CHOOSE US</span></p>
       
-      <div className='flex items-stretch justify-between mt-4 w-full mb-10 text-gray-700'>
+      <div className='flex items-stretch justify-between flex-wrap mt-4 w-full mb-10 text-gray-700'>
         <div className='flex-1 border border-gray-500 px-10 py-7 hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>
           <p className='font-medium mb-3'>Efficiency</p>
           <p>Our platform is designed for maximum efficiency, allowing you to quickly search, select, and book appointments with healthcare providers. With real-time availability and instant booking confirmations, you can save valuable time and avoid unnecessary delays.</p>

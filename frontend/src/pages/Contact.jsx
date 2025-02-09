@@ -5,9 +5,9 @@ const Contact = () => {
   return (
     <div className='w-full text-center mt-10'>
       <p className='text-2xl font-medium text-gray-600 mb-8'>CONTACT <span className='font-medium text-gray-900'>US</span></p>
-      <div className='flex gap-6 w-full mt-6'>
-        <img className='w-1/2 max-h-90' src={assets.contact_image} alt='' />
-        <div className='flex flex-col items-start justify-evenly'>
+      <div className='flex gap-6 w-full mt-6 flex-wrap md:flex-nowrap'>
+        <img className='sm:w-1/2 max-h-90 rounded-md sm:rounded-none' src={assets.contact_image} alt='' />
+        <div className='flex flex-col gap-6 sm:gap-0 items-start justify-evenly'>
         <p className='text-xl text-gray-800'>OUR OFFICE</p>
           <div className='flex flex-col items-start text-gray-700'>
             <p>54709 Willms Station</p>
