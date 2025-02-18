@@ -11,10 +11,10 @@ const Banner = () => {
       {/* ----- left side ----- */}
       <div className='flex-1 sm:py-10 md:py-16 lg:py-24 lg:pl-5'>
         <div className='text-3xl md:4xl lg:5xl text-white font-semibold'>
-            <p>Book Appointment</p>
+            <p className='mt-2'>Book Appointment</p>
             <p className='mt-4'>with 100+ trusted doctors</p>
         </div>
-        <button onClick={()=>{navigate('/login'); scrollTo(0,0)}} className='bg-white text-gray-900 mt-6 mb-2 rounded-full px-8 py-3 hover:scale-105 transition-all'>Create account</button>
+        <button onClick={()=>{navigate('/login'); scrollTo(0,0)}} className='bg-white text-gray-900 mt-6 mb-4 rounded-full px-8 py-3 hover:scale-105 transition-all'>Create account</button>
       </div>
       
       {/* ----- right side ----- */}
