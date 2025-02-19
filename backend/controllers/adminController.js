@@ -1,0 +1,63 @@
+
+import validator from 'validator';
+import bcrypt from 'bcrypt';
+import { v2 as cloudinary} from 'cloudinary';
+import doctorModel from './../models/doctorModel.js';
+
+// Api for adding doctor
+
+const addDoctor = async (req, res) => {
+    
+    try {
+        
+        const { name, email, password, speciality, degree, experience, about, fees, address} = req.body;
+        const imgaeFile = req.file;
+        
+        // checking for all data to add doctor
+        if(!name || !email || !password || !speciality || !degree || !experience || !about || !fees || !address){
+            return res.json({success:false, message:"missing some values"})
+        }
+        
+        // checking for email validation
+        if(!validator.isEmail(email)){
+            return res.json({success:false, message:"Please enter valid email"})
+        }
+        
+        if(password.length<8){
+            return res.json({success:false, message:"Please enter strong password"})
+        }
+        
+        // hashing password
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password, salt);
+        
+        const imageUpload = await cloudinary.uploader.upload(imgaeFile.path, {resource_type:'image'})
+        const imageUrl = imageUpload.secure_url
+        
+        const doctorData = {
+            name, 
+            email,
+            image:imageUrl, 
+            password:hashPassword, 
+            speciality, 
+            degree, 
+            experience, 
+            about, 
+            fees, 
+            address:JSON.parse(address),
+            date:Date.now()
+        }
+        
+        const newDoctor = new doctorModel(doctorData)
+        await newDoctor.save()
+        
+        res.json({success:true, message:"Doctor added"})
+                
+    } catch (error) {
+        console.log(error)
+        res.json({success:false, message:error.message})
+    }
+    
+}
+
+export { addDoctor }
