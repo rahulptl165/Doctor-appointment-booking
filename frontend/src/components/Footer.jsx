@@ -20,10 +20,10 @@ const Footer = () => {
         <div>
             <p className='text-xl font-medium text-gray-900 mb-5'>COMPANY</p>
             <ul className='flex flex-col gap-2 cursor-pointer'>
-                <li onClick={()=>{navigate('/'); scrollTo(0,0)}}>Home</li>
-                <li onClick={()=>{navigate('/about'); scrollTo(0,0)}}>About us</li>
-                <li onClick={()=>{navigate('/contact'); scrollTo(0,0)}}>Contact us</li>
-                <li onClick={()=>{navigate('/privacy-policy'); scrollTo(0,0)}}>Privacy Policy</li>
+                <li className='hover:underline hover:text-primary' onClick={()=>{navigate('/'); scrollTo(0,0)}}>Home</li>
+                <li className='hover:underline hover:text-primary' onClick={()=>{navigate('/about'); scrollTo(0,0)}}>About us</li>
+                <li className='hover:underline hover:text-primary' onClick={()=>{navigate('/contact'); scrollTo(0,0)}}>Contact us</li>
+                <li className='hover:underline hover:text-primary' onClick={()=>{navigate('/privacy-policy'); scrollTo(0,0)}}>Privacy Policy</li>
             </ul>
         </div>
         
