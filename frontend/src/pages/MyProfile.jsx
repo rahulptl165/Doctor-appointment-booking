@@ -16,7 +16,7 @@ const Myprofile = () => {
     dob:'2004-03-20'
   })
   
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
   
   return (
     <div className='w-full sm:w-1/2'>

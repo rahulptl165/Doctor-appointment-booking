@@ -26,3 +26,6 @@ assets
 *.sw?
 .env
 .env/*
+frontend/.env
+backend/.env
+admin/.env
