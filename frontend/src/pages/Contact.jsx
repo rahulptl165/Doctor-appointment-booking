@@ -14,7 +14,7 @@ const Contact = () => {
             <p>Suite 350, Washington, USA</p>
           </div>
           <div className='flex flex-col items-start text-gray-700'>
-            <p>Tel: +91 9060072413</p>
+            <p>Tel: +91 90xxxxxxxx</p>
             <p>Email: rahulptl2022@gmail.com</p>
           </div>
           <div className='flex flex-col items-start text-gray-700 gap-2'>
