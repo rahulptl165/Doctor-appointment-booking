@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from './../context/AppContext';
-import { doctors } from './../assets/assets';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const MyAppointment = () => {
   
   const { backendUrl, token, getDoctorsData } = useContext(AppContext);
   
   const [appointments, setAppointments] = useState([]);
+  
+  const navigate = useNavigate();
   
   const months = ['','jan', 'feb', 'march', 'apr', 'may', 'jun', 'jul', 'aug', 'sept', 'oct', 'nov', 'dec'];
   
@@ -51,6 +53,53 @@ const MyAppointment = () => {
     }
   }
   
+  const initPay = (order) => {
+    
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: 'Appointment Payment',
+      description: 'Appointment Payment',
+      order_id: order.id,
+      receipt: order.receipt,
+      handler: async (response) => {
+        
+        try {
+          
+          const {data} = await axios.post(backendUrl + '/api/user/verifyRazorpay',response, {headers:{token}});
+          if(data.success){
+            getUserAppointments();
+            navigate('/my-appointment');
+          }
+          
+        } catch (error) {
+          console.log(error);
+          toast.error(error.message);
+        }
+        
+      }
+    }
+    
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+    
+  }
+  
+  const paymentRazorpay = async (appointmentId) => {
+    try {
+      
+      const {data} = await axios.post(backendUrl + '/api/user/payment-razorpay', {appointmentId}, {headers:{token}});
+      if(data.success){
+        initPay(data.order);
+      }
+      
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  }
+  
   useEffect(()=>{
     if(token){
       getUserAppointments();
@@ -76,7 +125,8 @@ const MyAppointment = () => {
             </div>
             <div className=''></div>
             <div className=' flex flex-col justify-end gap-2 my-2'>
-              {!item.cancelled && <button className='border border-gray-200 px-10 py-4  hover:bg-primary transition-all duration-30 hover:text-white'>Pay Online</button>}
+              {!item.cancelled && item.payment && <button className='border border-indigo-200 rounded px-10 py-4 bg-indigo-100  text-black'>Paid</button>}
+              {!item.cancelled && !item.payment && <button onClick={()=>paymentRazorpay(item._id)} className='border border-gray-200 px-10 py-4  hover:bg-primary transition-all duration-30 hover:text-white'>Pay Online</button>}
               {!item.cancelled && <button onClick={()=>cancelAppointment(item._id)} className='border border-gray-200 px-10 py-4 hover:text-white hover:bg-red-500'>Cancel Appointment</button>}
               {item.cancelled && <button className='border border-red-500 rounded px-10 py-4 text-red-500 cursor-default'>Appointment Cancelled</button>}
             </div>
